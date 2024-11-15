@@ -1,0 +1,31 @@
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/EventController.scala:14:47: not found: type EventService
+[error]                                 eventService: EventService
+[error]                                               ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/EventController.scala:19:27: not found: type Event
+[error]     request.body.validate[Event] match {
+[error]                           ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/EventController.scala:38:27: not found: type Event
+[error]     request.body.validate[Event] match {
+[error]                           ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/IssueController.scala:12:47: not found: type IssueService
+[error]                                 issueService: IssueService
+[error]                                               ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/IssueController.scala:17:27: not found: type Issue
+[error]     request.body.validate[Issue] match {
+[error]                           ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/TaskController.scala:12:47: not found: type TaskService
+[error]                                  taskService: TaskService
+[error]                                               ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/TaskController.scala:17:27: not found: type Task
+[error]     request.body.validate[Task] match {
+[error]                           ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/TaskController.scala:42:27: not found: type AssignTasksRequest
+[error]     request.body.validate[AssignTasksRequest] match {
+[error]                           ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/TeamController.scala:12:50: not found: type TeamService
+[error]                                     teamService: TeamService
+[error]                                                  ^
+[error] /Users/amangarg/Downloads/play-event-service/app/controllers/TeamController.scala:17:27: not found: type Team
+[error]     request.body.validate[Team] match {
+[error]                           ^
+[error] 10 errors found

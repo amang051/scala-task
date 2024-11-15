@@ -1,0 +1,88 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.10.5 (Homebrew Java 23)
+[debug] Load.defaultLoad until apply took 22.727ms
+[debug]           Load.loadUnit: plugins took 19.136083ms
+[debug]           Load.loadUnit: defsScala took 0.124667ms
+[debug] [Loading] Scanning directory /Users/amangarg/Downloads/akka-event-service/project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /Users/amangarg/Downloads/akka-event-service/project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 4.4055 ms
+[debug]               Load.resolveProject(akka-event-service-build) took 12.089875ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id akka-event-service-build, base: /Users/amangarg/Downloads/akka-event-service/project, plugins: List(<none>))) took 23.311625ms
+[debug] [Loading] Done in /Users/amangarg/Downloads/akka-event-service/project, returning: (akka-event-service-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 27.841667ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.050792ms
+[debug]         Load.loadUnit(file:/Users/amangarg/Downloads/akka-event-service/project/, ...) took 48.512167ms
+[debug]       Load.apply: load took 255.281292ms
+[debug]       Load.apply: resolveProjects took 1.978541ms
+[debug]       Load.apply: finalTransforms took 22.109458ms
+[debug]       Load.apply: config.delegates took 1.920042ms
+[debug]       Load.apply: Def.make(settings)... took 122.537125ms
+[debug]       Load.apply: structureIndex took 29.364ms
+[debug]       Load.apply: mkStreams took 0.41925ms
+[info] loading project definition from /Users/amangarg/Downloads/akka-event-service/project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 760.541417ms
+[debug]     Load.loadUnit: defsScala took 0.001416ms
+[debug] [Loading] Scanning directory /Users/amangarg/Downloads/akka-event-service
+[debug]       Load.loadUnit: mkEval took 10.473ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 0.762792 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 0.820333ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: /Users/amangarg/Downloads/akka-event-service, plugins: List(<none>))) took 1.895625ms
+[debug] [Loading] Done in /Users/amangarg/Downloads/akka-event-service, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 54.355709ms
+[debug]     Load.loadUnit: cleanEvalClasses took 1.488166ms
+[debug]   Load.loadUnit(file:/Users/amangarg/Downloads/akka-event-service/, ...) took 816.803125ms
+[debug] Load.apply: load took 820.597542ms
+[debug] Load.apply: resolveProjects took 0.046292ms
+[debug] Load.apply: finalTransforms took 5.208292ms
+[debug] Load.apply: config.delegates took 0.150625ms
+[debug] Load.apply: Def.make(settings)... took 34.039583ms
+[debug] Load.apply: structureIndex took 11.325917ms
+[debug] Load.apply: mkStreams took 0.00125ms
+[info] set current project to akka-event-service (in build file:/Users/amangarg/Downloads/akka-event-service/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(shell, None, None)
+[info] sbt server started at local:///Users/amangarg/.sbt/1.0/server/bdf6e87cb4d8326adc36/sock
+[debug] Writing bsp connection file
+[info] started sbt server
