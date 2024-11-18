@@ -30,10 +30,10 @@ class EventRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
 
   private val events = TableQuery[EventTable]
 
-  def create(event: Event): Future[Long] = {
-    val insertQueryThenReturnId = events returning events.map(_.id)
+  def create(event: Event): Future[Event] = {
+    val insertQuery = events returning events.map(_.id) into ((eventData, id) => eventData.copy(id = Some(id)))
 
-    db.run(insertQueryThenReturnId += event)
+    db.run(insertQuery += event)
   }
 
   def getEventById(eventId: Long): Future[Event] = {
@@ -42,11 +42,24 @@ class EventRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
 
   def update(eventId: Long, event: Event): Future[Event] = {
     val updateQuery = events.filter(_.id === eventId)
-      .map(ele => (ele.eventType, ele.eventName, ele.eventDate, ele.slotNumber, ele.guestCount, ele.specialRequirements, ele.eventStatus))
+      .map(e => (e.eventType, e.eventName, e.eventDate, e.slotNumber, e.guestCount, e.specialRequirements, e.eventStatus))
       .update((event.eventType, event.eventName, event.eventDate, event.slotNumber, event.guestCount, event.specialRequirements, event.eventStatus))
 
     db.run(updateQuery).flatMap { _ =>
       getEventById(eventId)
+    }
+  }
+
+  def updateEventStatus(eventId: Long, newStatus: String): Future[Event] = {
+    val updateQuery = events.filter(_.id === eventId)
+      .map(_.eventStatus)
+      .update(Some(newStatus))
+
+    db.run(updateQuery).flatMap {
+      case 0 =>
+        Future.failed(new Exception(s"Event with ID $eventId not found"))
+      case _ =>
+        getEventById(eventId)
     }
   }
 
@@ -58,10 +71,6 @@ class EventRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
       .filterOpt(slotNumber) { case (event, s) => event.slotNumber === s }
 
     db.run(query.result)
-  }
-
-  def checkEventExists(date: LocalDate, slot: Int): Future[Boolean] = {
-    db.run(events.filter(event => event.eventDate === date && event.slotNumber === slot).exists.result)
   }
 
   def getEventsByDate(date: LocalDate): Future[Seq[Event]] = {

@@ -29,10 +29,10 @@ class TaskRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
 
   private val tasks = TableQuery[TaskTable]
 
-  def create(task: Task): Future[Long] = {
-    val insertQueryThenReturnId = tasks returning tasks.map(_.id)
+  def create(task: Task): Future[Task] = {
+    val insertQuery = tasks returning tasks.map(_.id) into ((eventData, id) => eventData.copy(id = Some(id)))
 
-    db.run(insertQueryThenReturnId += task)
+    db.run(insertQuery += task)
   }
 
   def getEventById(taskId: Long): Future[Task] = {

@@ -16,29 +16,11 @@ object EventManagementMsgReceivers {
   val MANAGER = "MANAGER"
 }
 
-object CorporateEquipmentAllocationMsgReceivers {
-  val MANAGER = "MANAGER"
-  val INVENTORY = "INVENTORY"
-  val MAINTENANCE = "MAINTENANCE"
-  val EMPLOYEE = "EMPLOYEE"
-}
-
 object MessageTopics {
   val EVENT_MANAGEMENT_TOPIC = "event-management-topic"
-  val CORPORATE_EQUIPMENT_ALLOCATION_TOPIC = "corporate-equipment-allocation-topic"
 }
 
 class EventManagementFileWriterActor() extends Actor {
-  def receive: Receive = {
-    case (fileName: String, messageType: String, message: String) =>
-      val bw = new BufferedWriter(new FileWriter(fileName, true))
-      bw.write(s"$messageType :: $message")
-      bw.newLine()
-      bw.close()
-  }
-}
-
-class CorporateEqpAllocationFileWriterActor() extends Actor {
   def receive: Receive = {
     case (fileName: String, messageType: String, message: String) =>
       val bw = new BufferedWriter(new FileWriter(fileName, true))
@@ -111,66 +93,11 @@ class EventManagementListener(cateringMessageListener: ActorRef,
 
 }
 
-
-class ManagerApprovalMessageListener(fileWriterActor: ActorRef) extends Actor {
-  override def receive: Receive = {
-    case msg: KafkaMessageFormat =>
-      println("Manager Approval Message Listener consumes the message")
-      fileWriterActor ! ("src/main/scala/messages/corporateEquipmentAllocation/managerApproval.txt", msg.messageType, msg.message)
-  }
-}
-
-class InventoryMessageListener(fileWriterActor: ActorRef) extends Actor {
-  override def receive: Receive = {
-    case msg: KafkaMessageFormat =>
-      println("Inventory Message Listener consumes the message")
-      fileWriterActor ! ("src/main/scala/messages/corporateEquipmentAllocation/inventory.txt", msg.messageType, msg.message)
-  }
-}
-
-class MaintenanceMessageListener(fileWriterActor: ActorRef) extends Actor {
-  override def receive: Receive = {
-    case msg: KafkaMessageFormat =>
-      println("Maintenance Message Listener consumes the message")
-      fileWriterActor ! ("src/main/scala/messages/corporateEquipmentAllocation/maintenance.txt", msg.messageType, msg.message)
-  }
-}
-
-class EmployeeMessageListener(fileWriterActor: ActorRef) extends Actor {
-  override def receive: Receive = {
-    case msg: KafkaMessageFormat =>
-      println("Employee Message Listener consumes the message")
-      fileWriterActor ! ("src/main/scala/messages/corporateEquipmentAllocation/employee.txt", msg.messageType, msg.message)
-  }
-}
-
-class CorporateEquipAllocation(managerApprovalMessageListener: ActorRef,
-                               inventoryMessageListener: ActorRef,
-                               maintenanceMessageListener: ActorRef,
-                               employeeMessageListener: ActorRef
-                             )extends Actor {
-  override def receive: Receive = {
-    case msg: KafkaMessageFormat => msg.receiver match {
-      case CorporateEquipmentAllocationMsgReceivers.MANAGER =>
-        managerApprovalMessageListener ! msg
-      case CorporateEquipmentAllocationMsgReceivers.INVENTORY =>
-        inventoryMessageListener ! msg
-      case CorporateEquipmentAllocationMsgReceivers.MAINTENANCE =>
-        maintenanceMessageListener ! msg
-      case CorporateEquipmentAllocationMsgReceivers.EMPLOYEE =>
-        employeeMessageListener ! msg
-    }
-  }
-
-}
-
-
 object KafkaConsumer {
   def main(args: Array[String]): Unit = {
     implicit val system = ActorSystem("MessagingConsumerSystem")
 
     val emFileWriterActor: ActorRef = system.actorOf(Props[EventManagementFileWriterActor], "EventManagementFileWriterActor")
-    val ceaFileWriterActor: ActorRef = system.actorOf(Props[CorporateEqpAllocationFileWriterActor], "CorporateEqpAllocationFileWriterActor")
 
     // Create the actors for all the event management listeners
     val cateringMessageListener: ActorRef = system.actorOf(Props(new CateringMessageListener(emFileWriterActor)), "CateringMessageListener")
@@ -183,18 +110,6 @@ object KafkaConsumer {
     val eventManagementListener: ActorRef = system.actorOf(Props(new EventManagementListener(
       cateringMessageListener, entertainmentMessageListener, decorationsMessageListener, logisticsMessageListener, managerMessageListener
     )), "EventManagementListener")
-
-    // Create the actors for all the corporate equipment allocation listeners
-    val managerApprovalMessageListener: ActorRef = system.actorOf(Props(new ManagerApprovalMessageListener(ceaFileWriterActor)), "ManagerApprovalMessageListener")
-    val inventoryMessageListener: ActorRef = system.actorOf(Props(new InventoryMessageListener(ceaFileWriterActor)), "InventoryMessageListener")
-    val maintenanceMessageListener: ActorRef = system.actorOf(Props(new MaintenanceMessageListener(ceaFileWriterActor)), "MaintenanceMessageListener")
-    val employeeMessageListener: ActorRef = system.actorOf(Props(new EmployeeMessageListener(ceaFileWriterActor)), "EmployeeMessageListener")
-
-    // Create the actor for project: corporate-equipment-allocation
-    val corporateEquipAllocationListener: ActorRef = system.actorOf(Props(new CorporateEquipAllocation(
-      managerApprovalMessageListener, inventoryMessageListener, maintenanceMessageListener, employeeMessageListener)), "CorporateEquipAllocationListener")
-
-
 
     val consumerSettings = ConsumerSettings(system, new StringDeserializer, new StringDeserializer)
       .withBootstrapServers("localhost"+":9092")
@@ -217,6 +132,5 @@ object KafkaConsumer {
 
     // Configure listeners
     listeners(MessageTopics.EVENT_MANAGEMENT_TOPIC, eventManagementListener)
-    listeners(MessageTopics.CORPORATE_EQUIPMENT_ALLOCATION_TOPIC, corporateEquipAllocationListener)
   }
 }

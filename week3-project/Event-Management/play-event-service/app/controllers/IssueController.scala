@@ -9,12 +9,10 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class IssueController @Inject()(
-                                val cc: ControllerComponents,
-                                issueService: IssueService
-                              )(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class IssueController @Inject()(cc: ControllerComponents, issueService: IssueService)
+                               (implicit ec: ExecutionContext) extends AbstractController(cc) {
 
-  // Register a team
+  // Create an issue
   def create(): Action[JsValue] = Action.async(parse.json) { request =>
     request.body.validate[Issue] match {
       case JsSuccess(issue, _) =>
@@ -25,5 +23,11 @@ class IssueController @Inject()(
           "message" -> "Invalid Issue data",
           "errors" -> JsError.toJson(errors))))
     }
+  }
+
+  // Get issue by id
+  def getIssueById(issueId: Long): Action[AnyContent] = Action.async {
+    issueService.getIssueById(issueId).map(created =>
+      Ok(Json.toJson(created)))
   }
 }

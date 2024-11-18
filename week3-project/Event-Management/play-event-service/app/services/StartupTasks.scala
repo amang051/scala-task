@@ -21,11 +21,9 @@ class StartupTasks @Inject()(eventRepository: EventRepository,
   def startDailyOverdueCheck(): Unit = {
     // Schedule the task to run daily at the specified time
     scheduler.scheduleAtFixedRate(
-      new Runnable {
-        override def run(): Unit = {
-          checkEventDayAlert()
-          checkPreparationRemainder()
-        }
+      () => {
+        checkEventDayAlert()
+        checkPreparationRemainder()
       },
       0L,
       TimeUnit.DAYS.toSeconds(1), // Repeat every 24 hours
@@ -36,10 +34,8 @@ class StartupTasks @Inject()(eventRepository: EventRepository,
   private def startPreciseNotificationScheduler(): Unit = {
     // Run this check every 6 hours to schedule precise notifications
     scheduler.scheduleAtFixedRate(
-      new Runnable {
-        override def run(): Unit = {
-          scheduleUpcomingEventNotifications()
-        }
+      () => {
+        scheduleUpcomingEventNotifications()
       },
       0L,
       TimeUnit.HOURS.toSeconds(3),
@@ -94,12 +90,7 @@ class StartupTasks @Inject()(eventRepository: EventRepository,
     }
   }
 
-  private def scheduleOneTimeNotification(
-                                           scheduledTime: LocalDateTime,
-                                           event: Event,
-                                           task: Task,
-                                           timeDescription: Int
-                                         ): Unit = {
+  private def scheduleOneTimeNotification(scheduledTime: LocalDateTime, event: Event, task: Task, timeDescription: Int): Unit = {
     val now = LocalDateTime.now()
     val delay = Duration.between(now, scheduledTime)
 
@@ -120,7 +111,7 @@ class StartupTasks @Inject()(eventRepository: EventRepository,
   private def checkEventDayAlert(): Unit = {
     val currentDate = LocalDate.now()
 
-    // Retrieve overdue allocations as a Future[Seq[EquipmentAllocation]]
+    // Retrieve overdue events
     eventRepository.getEventsByDate(currentDate: LocalDate).flatMap { events =>
       Future.sequence(
         events.map { event =>
@@ -139,7 +130,7 @@ class StartupTasks @Inject()(eventRepository: EventRepository,
   private def checkPreparationRemainder(): Unit = {
     val eventDate = LocalDate.now().plusDays(1)
 
-    // Retrieve overdue allocations as a Future[Seq[EquipmentAllocation]]
+    // Retrieve overdue events
     eventRepository.getEventsByDate(eventDate: LocalDate).flatMap { events =>
       Future.sequence(
         events.map { event =>

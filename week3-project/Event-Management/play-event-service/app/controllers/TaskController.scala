@@ -10,10 +10,8 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class TaskController @Inject()(
-                                 val cc: ControllerComponents,
-                                 taskService: TaskService
-                               )(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class TaskController @Inject()(cc: ControllerComponents, taskService: TaskService)
+                              (implicit ec: ExecutionContext) extends AbstractController(cc) {
 
   // Create a task
   def createTask(): Action[JsValue] = Action.async(parse.json) { request =>
@@ -34,10 +32,21 @@ class TaskController @Inject()(
       Ok(Json.toJson(created)))
   }
 
-  // Update task details
-  def updateTaskStatus(taskId: Long, status: String): Action[AnyContent] = Action.async {
-    taskService.updateStatus(taskId, status).map(updated =>
-    Ok(Json.toJson(updated)))
+  // Update task status
+  def updateTaskStatus(taskId: Long): Action[JsValue] = Action.async(parse.json) { request =>
+    val newStatus = request.headers.get("newStatus")
+
+    newStatus match {
+      case Some(status) =>
+        taskService.updateStatus(taskId, status).map { updatedTask =>
+          Ok(Json.toJson(updatedTask))
+        }.recover {
+          case ex: Exception =>
+            BadRequest(Json.obj("message" -> s"Error updating task status: ${ex.getMessage}"))
+        }
+      case None =>
+        Future.successful(BadRequest(Json.obj("message" -> "newStatus header is required")))
+    }
   }
 
   // Assign tasks

@@ -12,17 +12,19 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 POST    /event                      controllers.EventController.createEvent()
 GET     /event/:eventId             controllers.EventController.getEventById(eventId: Long)
 PUT     /event/:eventId             controllers.EventController.updateEvent(eventId: Long)
-GET     /events                     controllers.EventController.listEvents(eventType: Option[String], status: Option[String], eventDate: Option[String], slotNumber: Option[Int])
-GET     /events/:eventId/tasks      controllers.EventController.getTasksForEventId(eventId: Long)
+PATCH   /event/:eventId             controllers.EventController.updateEventStatus(eventId: Long)
+GET     /event                      controllers.EventController.listEvents(eventType: Option[String], status: Option[String], eventDate: Option[String], slotNumber: Option[Int])
+GET     /event/:eventId/tasks       controllers.EventController.getTasksForEventId(eventId: Long)
 
 
 POST    /task                      controllers.TaskController.createTask()
 GET     /task/:taskId              controllers.TaskController.getTaskById(taskId: Long)
-PUT     /task/:taskId              controllers.TaskController.updateTaskStatus(taskId: Long, status: String)
+PUT     /task/:taskId              controllers.TaskController.updateTaskStatus(taskId: Long)
 POST    /task/assign               controllers.TaskController.assignTasks()
 
-POST    /team                      controllers.TeamController.registerTeam()
+POST    /team                      controllers.TeamController.createTeam()
 GET     /team/:teamId              controllers.TeamController.getTeamDetails(teamId: Long)
-GET     /teams                     controllers.TeamController.listTeams(teamType: Option[String])
+GET     /team                      controllers.TeamController.listTeams(teamType: Option[String])
 
 POST    /issue                     controllers.IssueController.create()
+GET     /issue/:issueId            controllers.IssueController.getIssueById(issueId: Long)

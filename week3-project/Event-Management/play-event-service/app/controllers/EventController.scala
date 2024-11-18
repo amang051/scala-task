@@ -11,10 +11,8 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class EventController @Inject()(
-                                val cc: ControllerComponents,
-                                eventService: EventService
-                              )(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class EventController @Inject()(cc: ControllerComponents, eventService: EventService)
+                               (implicit ec: ExecutionContext) extends AbstractController(cc) {
 
   // Create an event
   def createEvent(): Action[JsValue] = Action.async(parse.json) { request =>
@@ -45,6 +43,23 @@ class EventController @Inject()(
         Future.successful(BadRequest(Json.obj(
           "message" -> "Invalid Event data",
           "errors" -> JsError.toJson(errors))))
+    }
+  }
+
+  // Update event status
+  def updateEventStatus(eventId: Long): Action[JsValue] = Action.async(parse.json) { request =>
+    val newStatus = request.headers.get("newStatus")
+
+    newStatus match {
+      case Some(status) =>
+        eventService.updateEventStatus(eventId, status).map { updatedEvent =>
+          Ok(Json.toJson(updatedEvent))
+        }.recover {
+          case ex: Exception =>
+            BadRequest(Json.obj("message" -> s"Error updating event status: ${ex.getMessage}"))
+        }
+      case None =>
+        Future.successful(BadRequest(Json.obj("message" -> "newStatus header is required")))
     }
   }
 

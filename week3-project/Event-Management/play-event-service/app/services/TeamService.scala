@@ -7,10 +7,8 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
-class TeamService @Inject() (
-                                  teamRepository: TeamRepository
-                                ) {
-  def create(team: Team): Future[Long] = teamRepository.create(team)
+class TeamService @Inject() (teamRepository: TeamRepository) {
+  def create(team: Team): Future[Team] = teamRepository.create(team)
 
   def getTeamDetailsById(teamId: Long): Future[Team] = teamRepository.getTeamDetailsById(teamId)
 

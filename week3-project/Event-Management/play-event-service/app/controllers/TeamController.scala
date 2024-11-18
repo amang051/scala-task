@@ -9,13 +9,11 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class TeamController @Inject()(
-                                    val cc: ControllerComponents,
-                                    teamService: TeamService
-                                  )(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class TeamController @Inject()(cc: ControllerComponents, teamService: TeamService)
+                              (implicit ec: ExecutionContext) extends AbstractController(cc) {
 
-  // Register a team
-  def registerTeam(): Action[JsValue] = Action.async(parse.json) { request =>
+  // Create a team
+  def createTeam(): Action[JsValue] = Action.async(parse.json) { request =>
     request.body.validate[Team] match {
       case JsSuccess(team, _) =>
         teamService.create(team).map(created =>

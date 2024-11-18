@@ -24,10 +24,10 @@ class TeamRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
 
   private val teams = TableQuery[TeamsTable]
 
-  def create(team: Team): Future[Long] = {
-    val insertQueryThenReturnId = teams returning teams.map(_.id)
+  def create(team: Team): Future[Team] = {
+    val insertQuery = teams returning teams.map(_.id) into ((eventData, id) => eventData.copy(id = Some(id)))
 
-    db.run(insertQueryThenReturnId += team)
+    db.run(insertQuery += team)
   }
 
   def getTeamDetailsById(teamId: Long): Future[Team] = {
@@ -35,8 +35,7 @@ class TeamRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
   }
 
   def listTeams(teamType: Option[String]): Future[Seq[Team]] = {
-    val query = teams
-      .filterOpt(teamType) { case (team, s) => team.teamType === s }
+    val query = teams.filterOpt(teamType) { case (team, s) => team.teamType === s }
 
     db.run(query.result)
   }

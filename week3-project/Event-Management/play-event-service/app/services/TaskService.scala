@@ -9,11 +9,9 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class TaskService @Inject() (
-                               taskRepository: TaskRepository,
-                               kafkaProducerFactory: KafkaProducerFactory
-                             )(implicit executionContext: ExecutionContext) {
-  def create(task: Task): Future[Long] = taskRepository.create(task)
+class TaskService @Inject() (taskRepository: TaskRepository, kafkaProducerFactory: KafkaProducerFactory)
+                            (implicit executionContext: ExecutionContext) {
+  def create(task: Task): Future[Task] = taskRepository.create(task)
 
   def getEventById(taskId: Long): Future[Task] = taskRepository.getEventById(taskId)
 
@@ -40,6 +38,5 @@ class TaskService @Inject() (
       kafkaProducerFactory.sendTasksAssignmentList(lists)
       lists
     }
-
   }
 }

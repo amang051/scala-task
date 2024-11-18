@@ -53,7 +53,7 @@ class KafkaProducerFactory @Inject()() {
 
   def sendIssueReport(issue: Issue): Unit = {
     val record: ProducerRecord[String, String] = {
-      var message =
+      val message =
         s"""${issue.issueType} in ${issue.taskId} taskId for event(${issue.eventId}) from team(${issue.teamId}), reportedAt: ${issue.reportedAt} with description: ${issue.issueDescription}""".stripMargin
 
       val kafkaMessageFormat = KafkaMessageFormat(
@@ -71,7 +71,7 @@ class KafkaProducerFactory @Inject()() {
 
   def sendEventAlerts(event: Event, tasks: Seq[Task], isEventDay: Boolean): Unit = {
     val producerRecords: Seq[ProducerRecord[String, String]] = tasks.map { task =>
-      var message = if(isEventDay) s"Event Day Alert - Please complete taskId: ${task.id.get}"
+      val message = if(isEventDay) s"Event Day Alert - Please complete taskId: ${task.id.get}"
       else s"Preparation Remainder - Please complete taskId: ${task.id.get}"
 
       val receiver = task.teamId match {
