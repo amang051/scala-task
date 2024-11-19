@@ -1,12 +1,15 @@
 package services
 
-import models.{BookingDetails, Guest, KafkaMessageFormat}
-import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord, RecordMetadata}
+import models.{BookingDetails, Guest, KafkaMessageFormat, Menu}
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import play.api.libs.json._
 import services.MessageTeam.{GUEST, RESTAURANT_SERVICE, ROOM_SERVICE, WIFI_SERVICE}
 
 import java.util.Properties
 import javax.inject._
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration.DurationInt
+import scala.concurrent.{Await, Future}
 
 object MessageTeam {
   val ROOM_SERVICE = "ROOM_SERVICE"
@@ -53,12 +56,13 @@ class KafkaProducerFactory @Inject() {
     }
   }
 
-  def sendMenu(guest: Guest): Unit = {
+  def sendMenu(guest: Guest, menuItems: Future[Seq[Menu]]): Unit = {
+    val msg = createMessage(menuItems)
     val record: ProducerRecord[String, String] = {
       val kafkaMessageFormat = KafkaMessageFormat(
         receiver=GUEST,
         messageType="Menu",
-        message= s"Today's Menu is Biryani, for guest: ${guest.name}"
+        message= s"Today's Menu is ${msg}, for guest: ${guest.id} : ${guest.name}"
       )
 
       val jsonMessage: String = Json.stringify(Json.toJson(kafkaMessageFormat))
@@ -66,6 +70,24 @@ class KafkaProducerFactory @Inject() {
     }
 
     producer.send(record)
+  }
+
+  private def createMessage(menuItems: Future[Seq[Menu]]): String = {
+    val items = Await.result(menuItems, 10.seconds)
+
+    // Build the message string
+    val messageBuilder = new StringBuilder
+
+    items.foreach { menu =>
+      messageBuilder.append(s"${menu.foodName} - ${menu.price}, ")
+    }
+
+    // Remove the trailing comma and space at the end
+    if (messageBuilder.nonEmpty) {
+      messageBuilder.setLength(messageBuilder.length - 2)
+    }
+
+    messageBuilder.toString()
   }
 
 }

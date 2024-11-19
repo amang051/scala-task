@@ -6,6 +6,8 @@ import slick.jdbc.JdbcProfile
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
+import scala.util.Random
+import scala.util.Random.javaRandomToRandom
 
 @Singleton
 class MenuRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -15,22 +17,21 @@ class MenuRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
 
   private class MenuTable(tag: Tag) extends Table[Menu](tag, "menu") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def foodItem = column[String]("foodItem")
-    def foodType = column[String]("foodType")
+    def foodName = column[String]("foodName")
     def price = column[Double]("price")
-    def * = (id.?, foodItem, foodType, price) <> ((Menu.apply _).tupled, Menu.unapply)
+    def * = (id.?, foodName, price) <> ((Menu.apply _).tupled, Menu.unapply)
   }
 
   private val menus = TableQuery[MenuTable]
 
-//  def listMenu(fodType: Option[String]): Future[Seq[Menu]] = {
-//    val query = menus.filterOpt(fodType) { case (menu, s) => menu.foodType === s }
-//
-//    db.run(query.result)
-//  }
-//
-//  def insertMenuItem(insertList: Seq[Menu]): Future[Option[Int]] = db.run {
-//    menus.delete.andThen(menus ++= insertList)
-//  }
+  def listMenu: Future[Seq[Menu]] = {
+    // Raw SQL query to get 4 random records from the `menu` table
+    val query = menus.take(10)  // Fetch a larger number to simulate random selection
+
+    // Execute the query and randomly order the results in-memory
+    db.run(query.result).map { results =>
+      Random.shuffle(results).take(4)  // Shuffle and take the first 4 items
+    }
+  }
 }
 

@@ -1,11 +1,13 @@
 package services
 
+import repositories.MenuRepository
+
 import java.util.concurrent.{Executors, ScheduledExecutorService, TimeUnit}
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext
 
-class StartupTasks @Inject()(guestService: GuestService, kafkaProducerFactory: KafkaProducerFactory)
-                            (implicit ec: ExecutionContext) {
+class StartupTasks @Inject()(guestService: GuestService, menuRepository: MenuRepository,
+                             kafkaProducerFactory: KafkaProducerFactory)(implicit ec: ExecutionContext) {
 
   // Initial time after the application startup when this runs
   private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
@@ -26,9 +28,10 @@ class StartupTasks @Inject()(guestService: GuestService, kafkaProducerFactory: K
   // Method to send menu
   private def checkEventDayAlert(): Unit = {
     // Retrieve current guests
+    val menuItems = menuRepository.listMenu;
     guestService.getCurrentGuests.map { guests =>
       guests.foreach { guest =>
-        kafkaProducerFactory.sendMenu(guest)
+        kafkaProducerFactory.sendMenu(guest, menuItems)
       }
     }.recover {
       case ex: Exception =>
