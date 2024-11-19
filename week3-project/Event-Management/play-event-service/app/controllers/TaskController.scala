@@ -28,7 +28,7 @@ class TaskController @Inject()(cc: ControllerComponents, taskService: TaskServic
 
   // Get task details
   def getTaskById(taskId: Long): Action[AnyContent] = Action.async {
-    taskService.getEventById(taskId).map(created =>
+    taskService.getTaskById(taskId).map(created =>
       Ok(Json.toJson(created)))
   }
 

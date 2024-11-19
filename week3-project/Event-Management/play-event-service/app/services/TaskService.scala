@@ -13,7 +13,7 @@ class TaskService @Inject() (taskRepository: TaskRepository, kafkaProducerFactor
                             (implicit executionContext: ExecutionContext) {
   def create(task: Task): Future[Task] = taskRepository.create(task)
 
-  def getEventById(taskId: Long): Future[Task] = taskRepository.getEventById(taskId)
+  def getTaskById(taskId: Long): Future[Task] = taskRepository.getTaskById(taskId)
 
   def updateStatus(taskId: Long, status: String): Future[Task] = {
     taskRepository.updateStatus(taskId, status)
