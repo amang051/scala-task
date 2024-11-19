@@ -8,7 +8,6 @@ import services.MessageTeam.{GUEST, RESTAURANT_SERVICE, ROOM_SERVICE, WIFI_SERVI
 import java.time.LocalDateTime
 import java.util.Properties
 import javax.inject._
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{Await, Future}
 
@@ -76,19 +75,16 @@ class KafkaProducerFactory @Inject() {
   private def createMessage(menuItems: Future[Seq[Menu]]): String = {
     val items = Await.result(menuItems, 10.seconds)
 
-    // Build the message string
     val messageBuilder = new StringBuilder
 
     items.foreach { menu =>
       messageBuilder.append(s"${menu.foodName} - ${menu.price}, ")
     }
 
-    // Remove the trailing comma and space at the end
     if (messageBuilder.nonEmpty) {
       messageBuilder.setLength(messageBuilder.length - 2)
     }
 
     messageBuilder.toString()
   }
-
 }

@@ -4,7 +4,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                            controllers.HomeController.index()
+GET     /                           controllers.HomeController.index()
 
 POST    /room                       controllers.RoomController.create()
 GET     /room                       controllers.RoomController.getAvailableRoomsByCategory

@@ -9,15 +9,14 @@ import scala.concurrent.ExecutionContext
 class StartupTasks @Inject()(guestService: GuestService, menuRepository: MenuRepository,
                              kafkaProducerFactory: KafkaProducerFactory)(implicit ec: ExecutionContext) {
 
-  // Initial time after the application startup when this runs
   private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
-  startDailyOverdueCheck()
+  startDailyNotification()
 
-  def startDailyOverdueCheck(): Unit = {
+  private def startDailyNotification(): Unit = {
     // Schedule the task to run daily at the specified time
     scheduler.scheduleAtFixedRate(
       () => {
-        checkEventDayAlert()
+        sendDailyMenu()
       },
       0L,
       TimeUnit.MINUTES.toSeconds(5), // Repeat every 5 minute
@@ -26,7 +25,7 @@ class StartupTasks @Inject()(guestService: GuestService, menuRepository: MenuRep
   }
 
   // Method to send menu
-  private def checkEventDayAlert(): Unit = {
+  private def sendDailyMenu(): Unit = {
     // Retrieve current guests
     val menuItems = menuRepository.listMenu;
     guestService.getCurrentGuests.map { guests =>
@@ -35,7 +34,7 @@ class StartupTasks @Inject()(guestService: GuestService, menuRepository: MenuRep
       }
     }.recover {
       case ex: Exception =>
-        println(s"Failed to check overdue allocations: ${ex.getMessage}")
+        println(s"Failed to send notification: ${ex.getMessage}")
     }
   }
 }

@@ -7,7 +7,6 @@ import slick.jdbc.JdbcProfile
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.Random
-import scala.util.Random.javaRandomToRandom
 
 @Singleton
 class MenuRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -25,12 +24,10 @@ class MenuRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
   private val menus = TableQuery[MenuTable]
 
   def listMenu: Future[Seq[Menu]] = {
-    // Raw SQL query to get 4 random records from the `menu` table
-    val query = menus.take(10)  // Fetch a larger number to simulate random selection
+    val query = menus.take(10)
 
-    // Execute the query and randomly order the results in-memory
     db.run(query.result).map { results =>
-      Random.shuffle(results).take(4)  // Shuffle and take the first 4 items
+      Random.shuffle(results).take(4)
     }
   }
 }

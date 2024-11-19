@@ -1,7 +1,7 @@
 package services
 
-import models.{BookingDetails, Room}
-import repositories.{BookingDetailsRepository, GuestRepository, RoomRepository}
+import models.BookingDetails
+import repositories.{BookingDetailsRepository, GuestRepository}
 
 import java.time.LocalDate
 import javax.inject.{Inject, Singleton}
