@@ -7,7 +7,6 @@ import services.MessageTeam.{GUEST, RESTAURANT_SERVICE, ROOM_SERVICE, WIFI_SERVI
 
 import java.util.Properties
 import javax.inject._
-import scala.concurrent.Future
 
 object MessageTeam {
   val ROOM_SERVICE = "ROOM_SERVICE"
