@@ -1,0 +1,4 @@
+[error] /Users/amangarg/Downloads/VS Code/week3-project/Hotel-Reception/play-hotel-service/app/services/KafkaProducerFactory.scala:4:15: object entity is not a member of package models
+[error] import models.entity.{Event, Issue, Task}
+[error]               ^
+[error] one error found
