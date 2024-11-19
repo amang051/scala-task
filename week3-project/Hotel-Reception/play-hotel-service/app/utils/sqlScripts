@@ -43,6 +43,5 @@ CREATE TABLE bookingDetails (
 CREATE TABLE menu (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,    -- id as the primary key with auto-increment
     foodItem VARCHAR(255) NOT NULL,           -- foodItem as a string (VARCHAR with max length 255), not null
-    foodType VARCHAR(255) NOT NULL,           -- foodType as a string (VARCHAR with max length 255), not null
     price DOUBLE NOT NULL                     -- price as a double (for storing price with decimal places), not null
 );

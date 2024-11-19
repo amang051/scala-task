@@ -7,8 +7,10 @@
 GET     /                            controllers.HomeController.index()
 
 POST    /room                       controllers.RoomController.create()
+GET     /room                       controllers.RoomController.getAvailableRoomsByCategory
 
 POST    /guest                      controllers.GuestController.create()
+POST    /guestWithId                controllers.GuestController.checkInWithFile
 GET     /currentGuests              controllers.GuestController.getCurrentGuests
 
 POST    /booking                    controllers.BookingDetailsController.registerBookingDetails()

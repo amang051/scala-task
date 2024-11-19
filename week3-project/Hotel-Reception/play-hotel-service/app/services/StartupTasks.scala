@@ -2,7 +2,7 @@ package services
 
 import java.util.concurrent.{Executors, ScheduledExecutorService, TimeUnit}
 import javax.inject.Inject
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.ExecutionContext
 
 class StartupTasks @Inject()(guestService: GuestService, kafkaProducerFactory: KafkaProducerFactory)
                             (implicit ec: ExecutionContext) {
@@ -15,28 +15,24 @@ class StartupTasks @Inject()(guestService: GuestService, kafkaProducerFactory: K
     // Schedule the task to run daily at the specified time
     scheduler.scheduleAtFixedRate(
       () => {
-//        checkEventDayAlert()
+        checkEventDayAlert()
       },
       0L,
-      TimeUnit.DAYS.toSeconds(1), // Repeat every 24 hours
+      TimeUnit.MINUTES.toSeconds(1), // Repeat every 1 minute
       TimeUnit.SECONDS
     )
   }
 
   // Method to send menu
-//  private def checkEventDayAlert()(implicit ec: ExecutionContext): Seq[Unit] = {
-//    // Retrieve current guests asynchronously
-//    guestService.getCurrentGuests.flatMap { guests =>
-//      // Use Future.sequence to send Kafka messages for each guest
-//      Future.sequence(
-//        guests.map { guest =>
-//          kafkaProducerFactory.sendMenu(guest) // Assuming sendMenu returns Future[Unit]
-//        }
-//      )
-//    }.recover {
-//      case ex: Exception =>
-//        // Log the exception
-//        println(s"Failed to check overdue allocations: ${ex.getMessage}")
-//    }
-//  }
+  private def checkEventDayAlert(): Unit = {
+    // Retrieve current guests
+    guestService.getCurrentGuests.map { guests =>
+      guests.foreach { guest =>
+        kafkaProducerFactory.sendMenu(guest)
+      }
+    }.recover {
+      case ex: Exception =>
+        println(s"Failed to check overdue allocations: ${ex.getMessage}")
+    }
+  }
 }
