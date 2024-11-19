@@ -35,7 +35,7 @@ class TaskRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
     db.run(insertQuery += task)
   }
 
-  def getEventById(taskId: Long): Future[Task] = {
+  def getTaskById(taskId: Long): Future[Task] = {
     db.run(tasks.filter(_.id === taskId).result.head)
   }
 
@@ -45,7 +45,7 @@ class TaskRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
       .update(status)
 
     db.run(updateQuery).flatMap { _ =>
-      getEventById(taskId)
+      getTaskById(taskId)
     }
   }
 

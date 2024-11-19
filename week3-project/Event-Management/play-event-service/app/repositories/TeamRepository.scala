@@ -25,7 +25,7 @@ class TeamRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
   private val teams = TableQuery[TeamsTable]
 
   def create(team: Team): Future[Team] = {
-    val insertQuery = teams returning teams.map(_.id) into ((eventData, id) => eventData.copy(id = Some(id)))
+    val insertQuery = teams returning teams.map(_.id) into ((teamData, id) => teamData.copy(id = Some(id)))
 
     db.run(insertQuery += team)
   }
