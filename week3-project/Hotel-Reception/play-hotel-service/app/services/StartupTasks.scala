@@ -20,7 +20,7 @@ class StartupTasks @Inject()(guestService: GuestService, menuRepository: MenuRep
         checkEventDayAlert()
       },
       0L,
-      TimeUnit.MINUTES.toSeconds(1), // Repeat every 1 minute
+      TimeUnit.MINUTES.toSeconds(5), // Repeat every 5 minute
       TimeUnit.SECONDS
     )
   }

@@ -42,6 +42,18 @@ CREATE TABLE bookingDetails (
 
 CREATE TABLE menu (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,    -- id as the primary key with auto-increment
-    foodItem VARCHAR(255) NOT NULL,           -- foodItem as a string (VARCHAR with max length 255), not null
+    foodName VARCHAR(255) NOT NULL,           -- foodItem as a string (VARCHAR with max length 255), not null
     price DOUBLE NOT NULL                     -- price as a double (for storing price with decimal places), not null
 );
+
+INSERT INTO menu (foodName, price) VALUES
+('Pizza', 747),        -- 747.17 rounded to 747
+('Burger', 457),       -- 456.67 rounded to 457
+('Pasta', 603),        -- 602.75 rounded to 603
+('Sushi', 1079),       -- 1079.17 rounded to 1079
+('Salad', 414),        -- 414.17 rounded to 414
+('Steak', 1300),       -- 1300.25 rounded to 1300
+('Sandwich', 540),     -- 539.50 rounded to 540
+('Fries', 248),        -- 248.17 rounded to 248
+('Ice Cream', 290),    -- 289.67 rounded to 290
+('Smoothie', 354);     -- 353.75 rounded to 354

@@ -5,6 +5,7 @@ import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import play.api.libs.json._
 import services.MessageTeam.{GUEST, RESTAURANT_SERVICE, ROOM_SERVICE, WIFI_SERVICE}
 
+import java.time.LocalDateTime
 import java.util.Properties
 import javax.inject._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -62,7 +63,7 @@ class KafkaProducerFactory @Inject() {
       val kafkaMessageFormat = KafkaMessageFormat(
         receiver=GUEST,
         messageType="Menu",
-        message= s"Today's Menu is ${msg}, for guest: ${guest.id} : ${guest.name}"
+        message= s"${LocalDateTime.now()}: Today's Menu is ${msg}, for guest: ${guest.id} : ${guest.name}"
       )
 
       val jsonMessage: String = Json.stringify(Json.toJson(kafkaMessageFormat))
