@@ -1,0 +1,2 @@
+ROOM_ALLOCATION :: Guest Name: Sumit, Email: sumit@apple.com, Address: Hoshiyarpur
+Booking successful for Guest: Sumit, Room ID: 4, Check-in: 2024-11-19, Check-out: 2024-11-20
