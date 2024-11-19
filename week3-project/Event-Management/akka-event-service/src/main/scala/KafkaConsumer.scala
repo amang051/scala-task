@@ -95,7 +95,7 @@ class EventManagementListener(cateringMessageListener: ActorRef,
 
 object KafkaConsumer {
   def main(args: Array[String]): Unit = {
-    implicit val system = ActorSystem("MessagingConsumerSystem")
+    implicit val system: ActorSystem = ActorSystem("MessagingConsumerSystem")
 
     val emFileWriterActor: ActorRef = system.actorOf(Props[EventManagementFileWriterActor], "EventManagementFileWriterActor")
 

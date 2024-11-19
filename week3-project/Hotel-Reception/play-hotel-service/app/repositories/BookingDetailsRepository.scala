@@ -1,49 +1,51 @@
 package repositories
 
 import models.BookingDetails
+
 import java.time.LocalDate
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
+@Singleton
 class BookingDetailsRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
   private val dbConfig = dbConfigProvider.get[JdbcProfile]
   import dbConfig._
   import profile.api._
 
-  private class BookingDetailsTable(tag: Tag) extends Table[BookingDetails](tag, "BookingDetails") {
-    def bookingId = column[Int]("booking_id", O.PrimaryKey, O.AutoInc) // Int to match the model
-    def guestId = column[Long]("guest_id")
-    def roomId = column[Int]("room_id") // Ensure this is Int if roomId in Room is also Int
-    def startDate = column[LocalDate]("start_date")
-    def endDate = column[LocalDate]("end_date")
+  private class BookingDetailsTable(tag: Tag) extends Table[BookingDetails](tag, "bookingDetails") {
+    def id = column[Long]("bookingId", O.PrimaryKey, O.AutoInc)
+    def guestId = column[Long]("guestId")
+    def roomId = column[Option[Long]]("roomId")
+    def category = column[String]("category")
+    def startDate = column[LocalDate]("startDate")
+    def endDate = column[LocalDate]("endDate")
 
-    def * = (bookingId, guestId, roomId, startDate, endDate) <> ((BookingDetails.apply _).tupled, BookingDetails.unapply)
+    def * = (id.?, guestId, roomId, category, startDate, endDate) <> ((BookingDetails.apply _).tupled, BookingDetails.unapply)
   }
 
   private val bookingDetails = TableQuery[BookingDetailsTable]
 
-  // Method to find booking by ID
-  def findBookingById(bookingId: Int): Future[Option[BookingDetails]] = db.run {
-    bookingDetails.filter(_.bookingId === bookingId).result.headOption
+  def create(booking: BookingDetails): Future[BookingDetails] = {
+    val insertQuery = bookingDetails returning bookingDetails.map(_.id) into ((bookingData, id) => bookingData.copy(id = Some(id)))
+
+    db.run(insertQuery += booking)
   }
 
-  // Method to get all bookings ending today
-  def getBookingsEndingToday: Future[Seq[BookingDetails]] = db.run {
-    bookingDetails.filter(_.endDate === LocalDate.now()).result
+  def findBookingById(bookingId: Long): Future[BookingDetails] = {
+    db.run(bookingDetails.filter(_.id === bookingId).result.head)
   }
 
-  // Method to delete booking by ID
-  def deleteBooking(bookingId: Int): Future[Int] = db.run {
-    bookingDetails.filter(_.bookingId === bookingId).delete
+  def getBookingsByDate(date: LocalDate): Future[Seq[BookingDetails]] = {
+    db.run(bookingDetails.filter(booking => booking.endDate === date).result)
   }
 
-  def addBooking(booking: BookingDetails): Future[Int] = db.run {
-    (bookingDetails returning bookingDetails.map(_.bookingId)) += booking
+  def getCurrentBookingsByDate(date: LocalDate): Future[Seq[BookingDetails]] = {
+    db.run(bookingDetails.filter(booking => booking.endDate >= date && booking.startDate <= date).result)
   }
 
-  def getBookingsEndingToday(today: LocalDate): Future[Seq[BookingDetails]] = db.run {
-    bookingDetails.filter(_.endDate === today).result
+  def getBookingsForRoom(roomId: Long): Future[Seq[BookingDetails]] = {
+    db.run(bookingDetails.filter(booking => booking.roomId === roomId).result)
   }
 }

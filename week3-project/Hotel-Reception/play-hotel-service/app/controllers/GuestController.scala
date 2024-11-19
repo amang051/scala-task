@@ -1,28 +1,34 @@
 package controllers
 
+import models.Guest
+
 import javax.inject._
 import play.api.mvc._
-import repositories.GuestRepository
 
 import scala.concurrent.{ExecutionContext, Future}
-import play.api.libs.json.Json
-import play.api.Logging
+import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
+import services.GuestService
 
 @Singleton
-class GuestController @Inject()(
-                                 val controllerComponents: ControllerComponents,
-                                 val guestRepository: GuestRepository
-                               )(implicit ec: ExecutionContext) extends BaseController with Logging {
+class GuestController @Inject()(cc: ControllerComponents, guestService: GuestService)
+                               (implicit ec: ExecutionContext) extends AbstractController(cc) {
 
-  def getActiveGuests: Action[AnyContent] = Action.async {
-    guestRepository.getActiveGuests.map { guests =>
-      // Filter only the required fields (name and email) and convert to JSON
-      val guestInfo = guests.map(guest => Json.obj("name" -> guest.name, "email" -> guest.email))
-      Ok(Json.obj("activeGuests" -> guestInfo))
-    } recover {
-      case ex: Exception =>
-        logger.error("Error retrieving active guests", ex)
-        InternalServerError(Json.obj("message" -> "Failed to retrieve active guests"))
+  // Create a guest
+  def create(): Action[JsValue] = Action.async(parse.json) { request =>
+    request.body.validate[Guest] match {
+      case JsSuccess(guest, _) =>
+        guestService.create(guest).map(id =>
+          Created(Json.obj("id" -> id, "message" -> "CREATED")))
+      case JsError(errors) =>
+        Future.successful(BadRequest(Json.obj(
+          "message" -> "Invalid Guest data",
+          "errors" -> JsError.toJson(errors))))
     }
+  }
+
+  // Get current guests
+  def getCurrentGuests: Action[AnyContent] = Action.async {
+    guestService.getCurrentGuests.map(created =>
+      Ok(Json.toJson(created)))
   }
 }
