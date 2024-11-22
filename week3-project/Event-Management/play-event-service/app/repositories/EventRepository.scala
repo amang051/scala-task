@@ -20,7 +20,7 @@ class EventRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
     def eventType = column[String]("eventType")
     def eventName = column[String]("eventName")
     def eventDate = column[LocalDate]("eventDate")
-    def slotNumber = column[Int]("slotNumber")
+    def slotNumber = column[Option[Int]]("slotNumber")
     def guestCount = column[Long]("guestCount")
     def specialRequirements = column[Option[String]]("specialRequirements")
     def eventStatus = column[Option[String]]("eventStatus")
@@ -71,6 +71,10 @@ class EventRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
       .filterOpt(slotNumber) { case (event, s) => event.slotNumber === s }
 
     db.run(query.result)
+  }
+
+  def getUpcomingEvents : Future[Seq[Event]] = {
+    db.run(events.filter(event => event.eventDate > LocalDate.now()).result)
   }
 
   def getEventsByDate(date: LocalDate): Future[Seq[Event]] = {

@@ -23,5 +23,7 @@ class EventService @Inject() (eventRepository: EventRepository, taskService: Tas
   def list(eventType: Option[String], status: Option[String], eventDate: Option[LocalDate], slotNumber: Option[Int])
   : Future[Seq[Event]] = eventRepository.listEvents(eventType: Option[String], status: Option[String], eventDate: Option[LocalDate], slotNumber: Option[Int])
 
+  def getUpcomingEvents : Future[Seq[Event]] = eventRepository.getUpcomingEvents
+
   def getTasksForEventId(eventId: Long): Future[Seq[Task]] = taskService.getTasksForEventId(eventId)
 }

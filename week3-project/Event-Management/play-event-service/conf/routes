@@ -15,6 +15,7 @@ PUT     /event/:eventId             controllers.EventController.updateEvent(even
 PATCH   /event/:eventId             controllers.EventController.updateEventStatus(eventId: Long)
 GET     /event                      controllers.EventController.listEvents(eventType: Option[String], status: Option[String], eventDate: Option[String], slotNumber: Option[Int])
 GET     /event/:eventId/tasks       controllers.EventController.getTasksForEventId(eventId: Long)
+GET     /upcomingEvents             controllers.EventController.upcomingEvents
 
 
 POST    /task                      controllers.TaskController.createTask()
