@@ -1,4 +1,4 @@
 ROOM_ALLOCATION :: Guest Name: Sumit, Email: sumit@apple.com, Address: Hoshiyarpur
 Booking successful for Guest: Sumit, Room ID: 4, Check-in: 2024-11-19, Check-out: 2024-11-20
-ROOM_ALLOCATION :: Guest Name: Sumit, Email: sumit@apple.com, Address: Hoshiyarpur
-Booking successful for Guest: Sumit, Room ID: 4, Check-in: 2024-11-19, Check-out: 2024-11-20
+ROOM_ALLOCATION :: Guest Name: John Doe, Email: john.doe@example.com, Address: 123 Main St
+Booking successful for Guest: John Doe, Room ID: 3, Check-in: 2024-11-20, Check-out: 2024-11-22

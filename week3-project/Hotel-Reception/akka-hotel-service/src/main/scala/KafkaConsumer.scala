@@ -98,7 +98,7 @@ object KafkaConsumer {
     )), "HotelReceptionListener")
 
     val consumerSettings = ConsumerSettings(system, new StringDeserializer, new StringDeserializer)
-      .withBootstrapServers("localhost"+":9092")
+      .withBootstrapServers("kafka1"+":9092")
       .withGroupId("group1")
       .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 
