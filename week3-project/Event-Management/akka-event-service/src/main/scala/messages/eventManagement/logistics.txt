@@ -1,0 +1,44 @@
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 19
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 15
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 6
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 11
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 19
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Logistics assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep bill ready

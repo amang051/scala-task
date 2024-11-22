@@ -1,0 +1,68 @@
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 17
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 13
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 3
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 17
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 4
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 5
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 9
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Entertainment assign, deadline: 2024-11-20T17:00:00 and specialInstructions: Keep high base

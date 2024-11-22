@@ -1,0 +1,44 @@
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 18
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 14
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 18
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 7
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 10
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Decorations assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep many balloons

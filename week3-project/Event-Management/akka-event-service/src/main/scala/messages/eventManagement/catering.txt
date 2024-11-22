@@ -1,0 +1,36 @@
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 12
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 12
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 12
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+TASK_ALLOCATION :: Task is allocated for eventId: 1 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+TASK_ALLOCATION :: Task is allocated for eventId: 2 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 12
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 12
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 2
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+PREPARATION_REMAINDER :: Preparation Remainder - Please complete taskId: 12
+TASK_ALLOCATION :: Task is allocated for eventId: 3 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+EVENT_DAY_ALERT :: Event Day Alert - Please complete taskId: 8
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
+TASK_ALLOCATION :: Task is allocated for eventId: 5 with description: Catering assign, deadline: 2024-11-20T17:00:00 and specialInstructions: keep food ready
