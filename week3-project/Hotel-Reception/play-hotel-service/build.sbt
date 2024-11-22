@@ -18,6 +18,6 @@ libraryDependencies ++= Seq(
 
 //libraryDependencies += ws
 libraryDependencies ++= Seq(
-  "org.apache.kafka" %% "kafka" % "3.0.0", // Replace with the latest version
+  "org.apache.kafka" %% "kafka" % "3.0.0",
   "org.apache.kafka" % "kafka-clients" % "3.0.0"
 )

@@ -2,7 +2,6 @@ CREATE TABLE guest (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,  -- guestId as the primary key with auto-increment
     name VARCHAR(255) NOT NULL,                  -- name as a string, not null
     age INT NOT NULL,                            -- age as an integer, not null
-    roomNo INT NOT NULL,                         -- roomNo as an integer, not null
     email VARCHAR(255) NOT NULL,                 -- email as a string, not null
     address TEXT NOT NULL,                       -- address as a string (TEXT for larger text data)
     idProof BLOB NULL                            -- idProof as binary data, nullable (BLOB to store images or binary data)
