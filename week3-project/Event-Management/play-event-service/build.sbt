@@ -14,5 +14,7 @@ libraryDependencies ++= Seq(
   "org.playframework" %% "play-slick-evolutions" % "6.1.0",    // Support for database migrations, similar to Flyway
   "mysql" % "mysql-connector-java" % "8.0.26",
   "com.typesafe.play" %% "play-json" % "2.9.2",
-  "org.apache.kafka" % "kafka-clients" % "3.4.0"
+  "org.apache.kafka" % "kafka-clients" % "3.4.0",
+  "com.auth0" % "java-jwt" % "4.3.0"
 )
+libraryDependencies += filters

@@ -29,3 +29,5 @@ GET     /team                      controllers.TeamController.listTeams(teamType
 
 POST    /issue                     controllers.IssueController.create()
 GET     /issue/:issueId            controllers.IssueController.getIssueById(issueId: Long)
+
+POST    /api/login                  controllers.AuthController.login
