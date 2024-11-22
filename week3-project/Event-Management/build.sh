@@ -1,5 +1,4 @@
-#git clone https://github.com/rajdeepdev98/Training-BootCamp-Apple.git
-#cd Training-BootCamp-Apple/
+#git clone https://github.com/amang051/scala-task.git
 #
 #cd Event-Management
 cd play-event-service
