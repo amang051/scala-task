@@ -54,6 +54,11 @@ services:
       - "9000:9000"
     environment:
       KAFKA_BOOTSTRAP_SERVERS: kafka1:9092,kafka2:9093,kafka3:9094
+      DB_HOST=scaladb.mysql.database.azure.com
+      DB_PORT=3306
+      DB_USER=mysqladmin
+      DB_PASSWORD=Password@12345
+      DB_NAME=aman_hotel_reception
     networks:
       - kafka-network
     container_name: play-app
