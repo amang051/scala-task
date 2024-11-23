@@ -54,6 +54,9 @@ services:
       - "9000:9000"
     environment:
       KAFKA_BOOTSTRAP_SERVERS: kafka1:9092,kafka2:9093,kafka3:9094
+      DB_URL: jdbc:mysql://scaladb.mysql.database.azure.com:3306/aman_event_management
+      DB_USER: mysqladmin
+      DB_PASSWORD: Password@12345
     networks:
       - kafka-network
     container_name: play-app
